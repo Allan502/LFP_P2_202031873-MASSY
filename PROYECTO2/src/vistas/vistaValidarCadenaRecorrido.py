@@ -28,6 +28,7 @@ class PantallaValidarCadenaRecorrido(tk.Toplevel):
         estado_actual = self.automata[4] #el estado actual comienza con el estado inicial
         estado_anterior=[]
         pila=[]
+        contador=0
         accept=False #aceptar cadena
         automataSeleccionado=self.automata
         w, h = A4
@@ -98,6 +99,9 @@ class PantallaValidarCadenaRecorrido(tk.Toplevel):
                             print("se puso $")
                             text.textLine("Se puso $ en la pila")
                         #aqui se mueve de transicion con epsilon
+                        text.textLine()
+                        contador+=1
+                        text.textLine("Paso numero: "+str(contador))
                         print("me movi con $ de "+transicion[0]+" a "+transicion[3])
                         text.textLine("Me movi con $ de "+str(transicion[0])+" a "+str(transicion[3]))
                         continue
@@ -134,6 +138,9 @@ class PantallaValidarCadenaRecorrido(tk.Toplevel):
                                 print("se puso $")
                                 text.textLine("Se puso $ en la pila")
                             #aqui continua moviendose entre transiciones
+                            text.textLine()
+                            contador+=1
+                            text.textLine("Paso numero: "+str(contador))
                             print("me movi con "+simbolo+" de "+transicion[0]+" a "+transicion[3])
                             text.textLine("Me movi con "+str(simbolo)+" de "+str(transicion[0])+" a "+str(transicion[3]))
                             break
@@ -183,12 +190,16 @@ class PantallaValidarCadenaRecorrido(tk.Toplevel):
                         print("se puso $")
                         text.textLine("Se puso $ en la pila")
                     #aqui continua moviendose entre transiciones
+                    text.textLine()
+                    contador+=1
+                    text.textLine("Paso numero: "+str(contador))
                     print("me movi con $ de "+transicion[0]+" a "+transicion[3])
                     text.textLine("Me movi con $ de "+str(transicion[0])+" a "+str(transicion[3]))
                     continue
             else:
                 continue
         #aqui solo muestro el estado final
+        text.textLine()
         print("Estado final: "+estado_actual)
         text.textLine("Estado final: "+str(estado_actual))
         if pila.__len__()>0:
@@ -198,7 +209,9 @@ class PantallaValidarCadenaRecorrido(tk.Toplevel):
         if estado_actual in self.automata[5]:
             print("cadena valida")
             #aqui llega si la cadena es valida y lo muestra en pantalla
+            text.textLine()
             text.textLine("CADENA VALIDA")
+            text.textLine()
             text.textLine()
             text.textLine("Automata de Pila generado con Graphviz")
             pdf.drawText(text)

@@ -10,6 +10,7 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 
 class PantallaValidarCadenaPasada(tk.Toplevel):
     pantallaParent = None
+    data=[['ITERACION', 'PILA', 'ENTRADA', 'TRANSICION']]
     def __init__(self, parent, automataAFD):
         super().__init__()
         self.pantallaParent=parent
@@ -31,6 +32,7 @@ class PantallaValidarCadenaPasada(tk.Toplevel):
         estado_anterior=[]
         pila=[]
         accept=False #aceptar cadena
+        contador=0
         print(".......START.........")
         for simbolo in texto:
             print("Entra")
@@ -73,6 +75,14 @@ class PantallaValidarCadenaPasada(tk.Toplevel):
                         else:
                             print("se puso $")
                         print("me movi con $ de "+transicion[0]+" a "+transicion[3])
+                        contador+=1
+                        print("Paso numero: "+str(contador))
+                        #operador ternario, a entrada se le asigna el valor si la longuitud de data es mayor a uno, en caso contrario, se le asigna una cadena vacia
+                        if transicion[1]=="$": 
+                            entrada=self.data[-1][2] if self.data.__len__() > 1 else ""
+                        else:
+                            entrada=self.data[-1][2]+simbolo if self.data.__len__() > 1 else simbolo
+                        self.data.append([str(contador),str(pila),str(entrada),str(transicion)])
                         continue
                     else:
                         if simbolo == transicion[1]:
@@ -94,7 +104,15 @@ class PantallaValidarCadenaPasada(tk.Toplevel):
                                 print("se puso: "+transicion[4])
                             else:
                                 print("se puso $")
+                            contador+=1
+                            print("Paso numero: "+str(contador))
                             print("me movi con "+simbolo+" de "+transicion[0]+" a "+transicion[3])
+                            #operador ternario, a entrada se le asigna el valor si la longuitud de data es mayor a uno, en caso contrario, se le asigna una cadena vacia
+                            if transicion[1]=="$": 
+                                entrada=self.data[-1][2] if self.data.__len__() > 1 else ""
+                            else:
+                                entrada=self.data[-1][2]+simbolo if self.data.__len__() > 1 else simbolo
+                            self.data.append([str(contador),str(pila),str(entrada),str(transicion)])
                             break
                         else:
                             continue
@@ -129,7 +147,15 @@ class PantallaValidarCadenaPasada(tk.Toplevel):
                         print("se puso: "+transicion[4])
                     else:
                         print("se puso $")
+                    contador+=1
+                    print("Paso numero: "+str(contador))
                     print("me movi con $ de "+transicion[0]+" a "+transicion[3])
+                    #operador ternario, a entrada se le asigna el valor si la longuitud de data es mayor a uno, en caso contrario, se le asigna una cadena vacia
+                    if transicion[1]=="$": 
+                        entrada=self.data[-1][2] if self.data.__len__() > 1 else ""
+                    else:
+                        entrada=self.data[-1][2]+simbolo if self.data.__len__() > 1 else simbolo
+                    self.data.append([str(contador),str(pila),str(entrada),str(transicion)])
                     continue
             else:
                 continue
@@ -148,16 +174,8 @@ class PantallaValidarCadenaPasada(tk.Toplevel):
         # Crear el documento PDF
         doc = SimpleDocTemplate("tabla.pdf", pagesize=letter)
     
-        # Datos de ejemplo para la tabla
-        data = [
-            ['ITERACION', 'PILA', 'ENTRADA', 'TRANSICION'],
-            ['', '', '', ''],
-            ['', '', '', ''],
-            ['', '', '', '']
-        ]
-    
         # Crear la tabla con los datos
-        table = Table(data)
+        table = Table(self.data)
     
         # Estilo de la tabla
         estilo = TableStyle([

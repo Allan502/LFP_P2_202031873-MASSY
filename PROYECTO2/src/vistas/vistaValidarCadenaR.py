@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import tkinter.messagebox as mbox
 
 class PantallaValidarCadenaR(tk.Toplevel):
@@ -71,7 +72,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
                         else:
                             tk.Label(self, text="se puso: $").pack(expand=True)
                             print("se puso $")
-                        tk.Label(self, text="me movi con $ de "+transicion[0]+" a "+transicion[3]).pack(expand=True)
+                        tk.Label(self, text="me movi con $ de "+transicion[0]+" a "+transicion[3]+" LA TRANSICION ACTUAL ES: "+str(transicion)).pack(expand=True)
                         print("me movi con $ de "+transicion[0]+" a "+transicion[3])
                         continue
                     else:
@@ -100,7 +101,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
                             else:
                                 tk.Label(self, text="se puso: $").pack(expand=True)
                                 print("se puso $")
-                            tk.Label(self, text="me movi con "+simbolo+" de "+transicion[0]+" a "+transicion[3]).pack(expand=True)
+                            tk.Label(self, text="me movi con "+simbolo+" de "+transicion[0]+" a "+transicion[3]+" LA TRANSICION ACTUAL ES: "+str(transicion)).pack(expand=True)
                             print("me movi con "+simbolo+" de "+transicion[0]+" a "+transicion[3])
                             break
                         else:
@@ -142,7 +143,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
                     else:
                         tk.Label(self, text="se puso: $").pack(expand=True)
                         print("se puso $")
-                    tk.Label(self, text="me movi con $ de "+transicion[0]+" a "+transicion[3]).pack(expand=True)
+                    tk.Label(self, text="me movi con $ de "+transicion[0]+" a "+transicion[3]+" LA TRANSICION ACTUAL ES: "+str(transicion)).pack(expand=True)
                     print("me movi con $ de "+transicion[0]+" a "+transicion[3])
                     continue
             else:
@@ -154,6 +155,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
             print("cadena invalida, la pila no esta vacia")
         if estado_actual in self.automata[5]:
             print("cadena valida")
+            
             return True
         else:
             print("cadena invalida")
