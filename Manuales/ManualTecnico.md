@@ -28,11 +28,11 @@ Este manual está diseñado para proporcionar a los usuarios y técnicos una gu�
 #### Uso y operación:
 ![Menu Principal](Menu.png)
 ![Proyecto 2](Proyecto2.png)  
-![Source](Source.png)   
-![Manuales](Manuales.png)   
-![Gramatica](GramaticaRegular.png)   
+![Source](Source.PNG)   
+![Manuales](Manuales.PNG)   
+![Gramatica](GramaticaRegular.PNG)   
 ![Automata de Pila](AutomataPila.PNG)  
-![Vistas](Vistas.png)    
+![Vistas](Vistas.PNG)    
 
 #### Solución de problemas:
 * Identificar el problema:

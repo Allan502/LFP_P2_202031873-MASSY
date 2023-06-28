@@ -29,8 +29,8 @@ Este manual está diseñado para proporcionar una guía completa sobre el funcio
 ![Pantalla Temporizador](PantallaTemporizador.png)  
 ![Pantalla Menu Principal](PantallaMenuPrincipal.png)    
 ![Pantalla Gramatica Libre de Contexto](PantallaGramatica.png)    
-![Pantalla Automata de Pila](PantallaAutomata.png)    
-![Pantalla Seleccionar](PantallaSeleccionar.png)    
+![Pantalla Automata de Pila](PantallaAutomata.PNG)    
+![Pantalla Seleccionar](PantallaSeleccionar.PNG)    
 
 
 #### Glosario de términos:
