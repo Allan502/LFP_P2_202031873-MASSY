@@ -3,6 +3,8 @@ from vistas.vistaCargaAutomataPila import PantallaCargaAutomataPila
 from vistas.vistaMostrarAutomataPila import PantallaMostrarAP
 from vistas.vistaSeleccionarAP import PantallaSeleccionarAFD
 from vistas.vistaSeleccionarAPR import PantallaSeleccionarAFDR
+from vistas.vistaSeleccionarAPRecorrido import PantallaSeleccionarAPRecorrido
+from vistas.vistaSeleccionarAPPasada import PantallaSeleccionarPasada
 
 class PantallaAutomataPila(tk.Toplevel):
     pantallaParent = None
@@ -21,8 +23,8 @@ class PantallaAutomataPila(tk.Toplevel):
         )
         tk.Button(self, text="Validar una Cadena", width=100, height=5, command=self.abrir_ventanaSeleccionarAP).pack(expand=True)
         tk.Button(self, text="Ruta de Validacion", width=100, height=5, command=self.abrir_ventanaSeleccionarAPRuta).pack(expand=True)
-        tk.Button(self, text="Recorrido Paso a Paso", width=100, height=5).pack(expand=True)
-        tk.Button(self, text="Validar Cadena en una Pasada", width=100, height=5).pack(expand=True)
+        tk.Button(self, text="Recorrido Paso a Paso", width=100, height=5, command=self.abrir_ventanaSeleccionarAPRecorrido).pack(expand=True)
+        tk.Button(self, text="Validar Cadena en una Pasada", width=100, height=5, command=self.abrir_ventanaSeleccionarAPPasada).pack(expand=True)
         tk.Button(self, text="Regresar", width=100, height=5, command=self.cerrar_ventana).pack(expand=True)
 
     def cerrar_ventana(self):
@@ -43,3 +45,11 @@ class PantallaAutomataPila(tk.Toplevel):
     def abrir_ventanaSeleccionarAPRuta(self):
         ventanaSAPR = PantallaSeleccionarAFDR(self)
         ventanaSAPR.grab_set()
+        
+    def abrir_ventanaSeleccionarAPRecorrido(self):
+        ventanaSAPRe = PantallaSeleccionarAPRecorrido(self)
+        ventanaSAPRe.grab_set()
+
+    def abrir_ventanaSeleccionarAPPasada(self):
+        ventanaPasada = PantallaSeleccionarPasada(self)
+        ventanaPasada.grab_set()

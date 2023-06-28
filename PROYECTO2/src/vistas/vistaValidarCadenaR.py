@@ -69,7 +69,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
                             tk.Label(self, text="se puso: "+transicion[4]).pack(expand=True)
                             print("se puso: "+transicion[4])
                         else:
-                            tk.Label(self, text="se puso: $"+transicion[4]).pack(expand=True)
+                            tk.Label(self, text="se puso: $").pack(expand=True)
                             print("se puso $")
                         tk.Label(self, text="me movi con $ de "+transicion[0]+" a "+transicion[3]).pack(expand=True)
                         print("me movi con $ de "+transicion[0]+" a "+transicion[3])
@@ -91,7 +91,7 @@ class PantallaValidarCadenaR(tk.Toplevel):
                                     print("el valor a extraer :"+transicion[2]+ " no coincide con el valor en la pila: "+pila[-1])
                                     return False
                             else:
-                                tk.Label(self, text="saco: $"+transicion[2]).pack(expand=True)
+                                tk.Label(self, text="saco: $").pack(expand=True)
                                 print("se saco $")
                             if transicion[4] != "$":
                                 pila.append(transicion[4]) 
