@@ -45,7 +45,8 @@ class PantallaArbol(tk.Toplevel):
                 automataSeleccionado=automataAFN
                 self.gramatica=automataAFN
                 graficoArbol=DerivationTreeGraph(self.gramatica)
-                graficoArbol.generate_tree([])
+                #graficoArbol.produccion_a_arbol()
+                graficoArbol.generate_tree()
                 break
 
 
