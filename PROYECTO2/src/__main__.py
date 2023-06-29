@@ -37,17 +37,17 @@ class App:
             self.root.after(1000, self.countdown, remaining - 1)  # Llama a la función después de 1 segundo
     
     def show_main_menu(self):
-        main_menu = tk.Tk()
-        main_menu.title("Menú Principal")
-        main_menu.geometry("4000x3000")
+        self.main_menu = tk.Tk()
+        self.main_menu.title("Menú Principal")
+        self.main_menu.geometry("4000x3000")
         
         # Aquí puedes agregar los elementos del menú principal
         
-        label = tk.Label(main_menu, text="¡Bienvenido al menú principal!", font=("Arial", 16))
+        label = tk.Label(self.main_menu, text="¡Bienvenido al menú principal!", font=("Arial", 16))
         label.pack(pady=50)
-        tk.Label(main_menu, text="PROYECTO 2", bg="#B291E8").pack(expand=True)
+        tk.Label(self.main_menu, text="PROYECTO 2", bg="#B291E8").pack(expand=True)
         tk.Button(
-            main_menu,
+            self.main_menu,
             text="Modulo Gramatica Libre de Contexto",
             width=100,
             height=5,
@@ -55,7 +55,7 @@ class App:
         ).pack(expand=True)
         
         tk.Button(
-            main_menu,
+            self.main_menu,
             text="Modulo Automata de Pila",
             width=100,
             height=5,
@@ -63,10 +63,13 @@ class App:
         ).pack(expand=True)
         
         tk.Button(
-            main_menu, text="Salir", width=100, height=5, command=exit
+            self.main_menu, text="Salir", width=100, height=5, command=self.mostrar_pantalla_salida
         ).pack(expand=True)
         
-        main_menu.mainloop()
+        self.label_temporizador = tk.Label(self.main_menu, text="Temporizador en la pantalla de inicio")
+        self.label_temporizador.pack()
+        
+        self.main_menu.mainloop()
         
     def abrir_ventanaGramaticasLC(self):
         ventanaG = PantallaGramaticasLC(self)
@@ -75,6 +78,29 @@ class App:
     def abrir_ventanaAutomataPila(self):
         ventanaAP = PantallaAutomataPila(self)
         ventanaAP.grab_set()
+        
+    def mostrar_pantalla_salida(self):
+        self.main_menu.withdraw()  # Oculta la ventana principal
+
+        self.pantalla_salida = tk.Toplevel(self.main_menu)
+        self.pantalla_salida.title("Pantalla de salida")
+        self.pantalla_salida.geometry("400x300")
+
+        self.label_temporizador = tk.Label(self.pantalla_salida, text="Cerrando en:")
+        self.label_temporizador.pack()
+
+        self.label_segundos = tk.Label(self.pantalla_salida, text="")
+        self.label_segundos.pack()
+
+        self.actualizar_temporizador(5)
+
+    def actualizar_temporizador(self, segundos):
+        if segundos > 0:
+            self.label_segundos.config(text=str(segundos))
+            segundos -= 1
+            self.label_segundos.after(1000, lambda: self.actualizar_temporizador(segundos))
+        else:
+            self.main_menu.destroy()  # Cierra la ventana principal y termina la aplicación
         
 if __name__ == "__main__":
     app = App()
